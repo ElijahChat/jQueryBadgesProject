@@ -6,7 +6,6 @@ $(function() {
     dataType: 'jsonp',
     success: function(response) {
       // handle response
-        console.log(response);
         var course;
         for(var i = 0; i < response.courses.completed.length; i++) {
           course = response.courses.completed[i];
