@@ -6,8 +6,11 @@ $(function() {
     dataType: 'jsonp',
     success: function(response) {
       // handle response
+      console.log(response);
+      var course;
         for(var i = 0; i < response.courses.completed.length; i++) {
-          $('#badges').html('<div class="course"><h3>' + response.courses.completed[i].title + '</h3><img src=' + response.courses.completed[i].badge + '><a href=' + response.courses[i].completed.url + ' target="_blank class="btn btn-primary">See Course</a></div>');
+          course = response.courses.completed[i];
+          $('#badges').html('<div class="course"><h3>' + course.title + '</h3><img src=' + course.badge + '><a href=' + course.url + ' target="_blank class="btn btn-primary">See Course</a></div>');
       }
     }
   });
