@@ -7,10 +7,27 @@ $(function() {
     success: function(response) {
       // handle response
         var course;
-        for(var i = 0; i < response.courses.completed.length; i++) {
-          course = response.courses.completed[i];
-          $('#badges').html('<div class="course"><h3>' + course.title + '</h3><img src=' + course.badge + '><a href=' + course.url + ' target="_blank class="btn btn-primary">See Course</a></div>');
-      }
+        courses.forEach(function() {
+          course = response.courses.completed;
+            $('<div />', {
+              'class': 'course'
+            }).appendTo($('#badges'));
+            var courseDiv = $('<div />', {
+              'class': 'course'
+            });
+            $('<h3 />', {
+              text: course.title
+            }).appendTo(courseDiv);
+            $('<img />', {
+              src: course.badge
+            }).appendTo(courseDiv);
+            $('<a />', {
+              href: course.url,
+              target: '_blank',
+              'class': 'btn btn-primary',
+              text: 'See Course'
+            }).appendTo(courseDiv);
+          });
     }
   });
 });
